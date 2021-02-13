@@ -32,7 +32,8 @@ namespace FlappyBirdProject
 			this.components = new System.ComponentModel.Container();
 			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FlappyBirdForm));
 			this.FlappyBirdSprite = new System.Windows.Forms.PictureBox();
-			this.timer1 = new System.Windows.Forms.Timer(this.components);
+			this.GravityTimer = new System.Windows.Forms.Timer(this.components);
+			this.JumpTimer = new System.Windows.Forms.Timer(this.components);
 			((System.ComponentModel.ISupportInitialize)(this.FlappyBirdSprite)).BeginInit();
 			this.SuspendLayout();
 			// 
@@ -46,10 +47,15 @@ namespace FlappyBirdProject
 			this.FlappyBirdSprite.TabIndex = 0;
 			this.FlappyBirdSprite.TabStop = false;
 			// 
-			// timer1
+			// GravityTimer
 			// 
-			this.timer1.Interval = 10;
-			this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+			this.GravityTimer.Interval = 10;
+			this.GravityTimer.Tick += new System.EventHandler(this.GravityTimer_Tick);
+			// 
+			// JumpTimer
+			// 
+			this.JumpTimer.Interval = 10;
+			this.JumpTimer.Tick += new System.EventHandler(this.JumpTimer_Tick);
 			// 
 			// FlappyBirdForm
 			// 
@@ -61,6 +67,7 @@ namespace FlappyBirdProject
 			this.Name = "FlappyBirdForm";
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
 			this.Text = "Flappy Bird";
+			this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyDown);
 			((System.ComponentModel.ISupportInitialize)(this.FlappyBirdSprite)).EndInit();
 			this.ResumeLayout(false);
 
@@ -69,7 +76,8 @@ namespace FlappyBirdProject
 		#endregion
 
 		private System.Windows.Forms.PictureBox FlappyBirdSprite;
-		private System.Windows.Forms.Timer timer1;
+		private System.Windows.Forms.Timer GravityTimer;
+		private System.Windows.Forms.Timer JumpTimer;
 	}
 }
 
