@@ -1,7 +1,7 @@
 ﻿
 namespace FlappyBirdProject
 {
-	partial class FlappyBird
+	partial class FlappyBirdForm
 	{
 		/// <summary>
 		/// Required designer variable.
@@ -29,38 +29,47 @@ namespace FlappyBirdProject
 		/// </summary>
 		private void InitializeComponent()
 		{
-			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FlappyBird));
-			this.pictureBox1 = new System.Windows.Forms.PictureBox();
-			((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+			this.components = new System.ComponentModel.Container();
+			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FlappyBirdForm));
+			this.FlappyBirdSprite = new System.Windows.Forms.PictureBox();
+			this.timer1 = new System.Windows.Forms.Timer(this.components);
+			((System.ComponentModel.ISupportInitialize)(this.FlappyBirdSprite)).BeginInit();
 			this.SuspendLayout();
 			// 
-			// pictureBox1
+			// FlappyBirdSprite
 			// 
-			this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-			this.pictureBox1.Location = new System.Drawing.Point(58, 230);
-			this.pictureBox1.Name = "pictureBox1";
-			this.pictureBox1.Size = new System.Drawing.Size(38, 40);
-			this.pictureBox1.TabIndex = 0;
-			this.pictureBox1.TabStop = false;
+			this.FlappyBirdSprite.BackColor = System.Drawing.Color.Transparent;
+			this.FlappyBirdSprite.Image = ((System.Drawing.Image)(resources.GetObject("FlappyBirdSprite.Image")));
+			this.FlappyBirdSprite.Location = new System.Drawing.Point(33, 247);
+			this.FlappyBirdSprite.Name = "FlappyBirdSprite";
+			this.FlappyBirdSprite.Size = new System.Drawing.Size(37, 38);
+			this.FlappyBirdSprite.TabIndex = 0;
+			this.FlappyBirdSprite.TabStop = false;
 			// 
-			// FlappyBird
+			// timer1
+			// 
+			this.timer1.Interval = 10;
+			this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+			// 
+			// FlappyBirdForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
 			this.ClientSize = new System.Drawing.Size(271, 470);
-			this.Controls.Add(this.pictureBox1);
-			this.Name = "FlappyBird";
+			this.Controls.Add(this.FlappyBirdSprite);
+			this.Name = "FlappyBirdForm";
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
 			this.Text = "Flappy Bird";
-			((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.FlappyBirdSprite)).EndInit();
 			this.ResumeLayout(false);
 
 		}
 
 		#endregion
 
-		private System.Windows.Forms.PictureBox pictureBox1;
+		private System.Windows.Forms.PictureBox FlappyBirdSprite;
+		private System.Windows.Forms.Timer timer1;
 	}
 }
 

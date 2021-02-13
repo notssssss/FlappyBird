@@ -118,16 +118,19 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="pictureBox1.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="FlappyBirdSprite.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
-        iVBORw0KGgoAAAANSUhEUgAAACUAAAAmCAYAAABDClKtAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
-        wwAADsMBx2+oZAAAAOlJREFUWEftkjEKAjEQReN1BGs7C4/kebzFgoW9nSAIll7AO8hKhAfuZ2JmEWFH
-        U7wiyZ/5r0iapdRPjSblpUl5aVJePpJazZejsHZYxJfSkst1a8L77X4ewL21+5W4UizT8sMuDSCnMgo5
-        qysTT4rhkoRCft91T0oyetbeOFKEreJ3MPd/UjUssQzvJTkgp/3TlyLEx65B3hLL8O4lnhRLLZGMlnLW
-        +9N6MQrmpi+lcjWOmzSAey3xQn8cKSCs5TWYQ64GeXrjSQFDYIlY6FwJ7YsrpViLLaxZD78j9W2alJcm
-        5aVJ+Uj9A33XXxHlUpqTAAAAAElFTkSuQmCC
+        R0lGODlhJQAmAIIAAAAAAD4qN8xyAM9CLcW2ALqzs9XdnOr90iH/C05FVFNDQVBFMi4wAwEBAAAh+QQB
+        FAAAACwAAAAAJQAmAAAI7QABCBxIsKDBgwgTKlzIsKHDhxAjSpxIsaLFigEyatyY8aJAjiADYNRooKTJ
+        jAdSHugocaPJkwFUrhQJMeNLAjgJoJSpkmVDmyZz6ozJM6VPhUCFCs1YoIDMnUcPJlWKk6nTnkSjEsxI
+        larVp1lpSg3QVelXrEbFGgyp0WuApkW1DmTL1ezbq2DHvtxroO5SulGB8i3pNyfgwGQJ8K2amPGAx5Aj
+        P/ZZd/HQv5IzD0DMVoBnARknHx7b+XPozaMRZvzMuvVpzagTrm5N+7VmuVs10mYN+Kfu3Z5716TrcS7x
+        4siTK1/OvLnz5wsDAgA7
 </value>
   </data>
+  <metadata name="timer1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>29, 24</value>
+  </metadata>
   <data name="$this.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAR8AAAH9CAYAAAAj23jEAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO

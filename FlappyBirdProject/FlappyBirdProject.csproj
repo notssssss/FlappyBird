@@ -46,16 +46,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="FlappyBird.cs">
+    <Compile Include="FlappyBirdForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FlappyBird.Designer.cs">
-      <DependentUpon>FlappyBird.cs</DependentUpon>
+    <Compile Include="FlappyBirdForm.Designer.cs">
+      <DependentUpon>FlappyBirdForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="FlappyBird.resx">
-      <DependentUpon>FlappyBird.cs</DependentUpon>
+    <EmbeddedResource Include="FlappyBirdForm.resx">
+      <DependentUpon>FlappyBirdForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
