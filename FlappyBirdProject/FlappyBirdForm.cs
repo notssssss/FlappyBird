@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Media;
 
 namespace FlappyBirdProject
 {
@@ -34,6 +35,8 @@ namespace FlappyBirdProject
 			if (e.KeyCode == Keys.Space)
 			{
 				milliseconds = 0;
+				SoundPlayer player = new SoundPlayer(@"C:\Users\Soumya\Desktop\Repositories\FlappyBird\SoundEffects\wing.wav");
+				player.Play();
 				GravityTimer.Stop();
 				JumpTimer.Start();
 			}
