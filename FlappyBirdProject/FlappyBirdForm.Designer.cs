@@ -34,6 +34,7 @@ namespace FlappyBirdProject
 			this.FlappyBirdSprite = new System.Windows.Forms.PictureBox();
 			this.GravityTimer = new System.Windows.Forms.Timer(this.components);
 			this.JumpTimer = new System.Windows.Forms.Timer(this.components);
+			this.JumpAnimationWaitTimer = new System.Windows.Forms.Timer(this.components);
 			((System.ComponentModel.ISupportInitialize)(this.FlappyBirdSprite)).BeginInit();
 			this.SuspendLayout();
 			// 
@@ -57,6 +58,11 @@ namespace FlappyBirdProject
 			this.JumpTimer.Interval = 10;
 			this.JumpTimer.Tick += new System.EventHandler(this.JumpTimer_Tick);
 			// 
+			// JumpAnimationWaitTimer
+			// 
+			this.JumpAnimationWaitTimer.Interval = 10;
+			this.JumpAnimationWaitTimer.Tick += new System.EventHandler(this.JumpAnimationWait_Tick);
+			// 
 			// FlappyBirdForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -78,6 +84,7 @@ namespace FlappyBirdProject
 		private System.Windows.Forms.PictureBox FlappyBirdSprite;
 		private System.Windows.Forms.Timer GravityTimer;
 		private System.Windows.Forms.Timer JumpTimer;
+		private System.Windows.Forms.Timer JumpAnimationWaitTimer;
 	}
 }
 

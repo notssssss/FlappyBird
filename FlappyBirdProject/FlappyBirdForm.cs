@@ -51,6 +51,19 @@ namespace FlappyBirdProject
 			else
 			{
 				JumpTimer.Stop();
+				JumpAnimationWaitTimer.Start();
+			}
+		}
+
+		private void JumpAnimationWait_Tick(object sender, EventArgs e)
+		{
+			if (milliseconds < 130)
+			{
+				milliseconds += JumpAnimationWaitTimer.Interval;
+			}
+			else
+			{
+				JumpAnimationWaitTimer.Stop();
 				GravityTimer.Start();
 			}
 		}
