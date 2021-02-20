@@ -36,15 +36,17 @@ namespace FlappyBirdProject
 			this.JumpTimer = new System.Windows.Forms.Timer(this.components);
 			this.JumpAnimationWaitTimer = new System.Windows.Forms.Timer(this.components);
 			this.Sounds = new AxWMPLib.AxWindowsMediaPlayer();
+			this.Ground = new System.Windows.Forms.PictureBox();
 			((System.ComponentModel.ISupportInitialize)(this.FlappyBirdSprite)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.Sounds)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.Ground)).BeginInit();
 			this.SuspendLayout();
 			// 
 			// FlappyBirdSprite
 			// 
 			this.FlappyBirdSprite.BackColor = System.Drawing.Color.Transparent;
 			this.FlappyBirdSprite.Image = ((System.Drawing.Image)(resources.GetObject("FlappyBirdSprite.Image")));
-			this.FlappyBirdSprite.Location = new System.Drawing.Point(33, 247);
+			this.FlappyBirdSprite.Location = new System.Drawing.Point(12, 207);
 			this.FlappyBirdSprite.Name = "FlappyBirdSprite";
 			this.FlappyBirdSprite.Size = new System.Drawing.Size(49, 42);
 			this.FlappyBirdSprite.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -77,20 +79,34 @@ namespace FlappyBirdProject
 			this.Sounds.TabIndex = 1;
 			this.Sounds.Visible = false;
 			// 
+			// Ground
+			// 
+			this.Ground.BackColor = System.Drawing.Color.Transparent;
+			this.Ground.Image = ((System.Drawing.Image)(resources.GetObject("Ground.Image")));
+			this.Ground.InitialImage = ((System.Drawing.Image)(resources.GetObject("Ground.InitialImage")));
+			this.Ground.Location = new System.Drawing.Point(-8, 403);
+			this.Ground.Name = "Ground";
+			this.Ground.Size = new System.Drawing.Size(287, 152);
+			this.Ground.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+			this.Ground.TabIndex = 2;
+			this.Ground.TabStop = false;
+			// 
 			// FlappyBirdForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
 			this.ClientSize = new System.Drawing.Size(271, 470);
-			this.Controls.Add(this.Sounds);
 			this.Controls.Add(this.FlappyBirdSprite);
+			this.Controls.Add(this.Ground);
+			this.Controls.Add(this.Sounds);
 			this.Name = "FlappyBirdForm";
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
 			this.Text = "Flappy Bird";
 			this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.FlappyBirdForm_KeyPress);
 			((System.ComponentModel.ISupportInitialize)(this.FlappyBirdSprite)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.Sounds)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.Ground)).EndInit();
 			this.ResumeLayout(false);
 
 		}
@@ -102,6 +118,7 @@ namespace FlappyBirdProject
 		private System.Windows.Forms.Timer JumpTimer;
 		private System.Windows.Forms.Timer JumpAnimationWaitTimer;
 		private AxWMPLib.AxWindowsMediaPlayer Sounds;
+		private System.Windows.Forms.PictureBox Ground;
 	}
 }
 

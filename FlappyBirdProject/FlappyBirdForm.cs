@@ -18,6 +18,8 @@ namespace FlappyBirdProject
 		private int milliseconds = 0;
 
 		private Image frame1, frame2, frame3;
+
+		private bool dead = false;
 		public FlappyBirdForm()
 		{
 			InitializeComponent();
@@ -38,9 +40,30 @@ namespace FlappyBirdProject
 		}
 		private void GravityTimer_Tick(object sender, EventArgs e)
 		{
-			Point p = FlappyBirdSprite.Location;
-			p.Y += gravity;
-			FlappyBirdSprite.Location = p;
+			if (!dead)
+			{
+				Point p = FlappyBirdSprite.Location;
+
+				// checking if the bird hit the ground
+				float Y_bottom_bird = p.Y + FlappyBirdSprite.Size.Height;
+				Point p1 = Ground.Location;
+				float Y_top_ground = p1.Y;
+
+				if (Y_bottom_bird >= Y_top_ground && !dead)
+				{
+					GravityTimer.Stop();
+					MessageBox.Show("Dead bird. :-(");
+					dead = true;
+					gravity = 0;
+				}
+				else
+				{
+					// fall down
+					p = FlappyBirdSprite.Location;
+					p.Y += gravity;
+					FlappyBirdSprite.Location = p;
+				}
+			}
 		}
 
 		private void JumpTimer_Tick(object sender, EventArgs e)
@@ -53,7 +76,6 @@ namespace FlappyBirdProject
 				Point p = FlappyBirdSprite.Location;
 				p.Y += jumpspeed;
 				FlappyBirdSprite.Location = p;
-
 			}
 			else
 			{
@@ -80,7 +102,7 @@ namespace FlappyBirdProject
 
 		private void FlappyBirdForm_KeyPress(object sender, KeyPressEventArgs e)
 		{
-			if (e.KeyChar == ' ')
+			if (e.KeyChar == ' ' && !dead)
 			{
 				Jump();
 			}
