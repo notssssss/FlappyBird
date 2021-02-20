@@ -13,14 +13,14 @@ namespace FlappyBirdProject
 {
 	public partial class FlappyBirdForm : Form
 	{
-		private int gravity = 2;
-		private int jumpspeed = -4;
+		private int gravity = 3;
+		private int jumpspeed = -6;
 		private int milliseconds = 0;
 
 		private Image frame1, frame2, frame3;
 
-		private string path_die_sound = @"C:\Users\Soumya\Desktop\Repositories\FlappyBird\SoundEffects\hit1.wav";
-		private string path_jump_sound = @"C:\Users\Soumya\Desktop\Repositories\FlappyBird\SoundEffects\wing1.wav";
+		private string path_die_sound = @"C:\Users\Soumya\Desktop\Repositories\FlappyBird\SoundEffects\hit.wav";
+		private string path_jump_sound = @"C:\Users\Soumya\Desktop\Repositories\FlappyBird\SoundEffects\wing.wav";
 
 		private bool dead = false;
 		public FlappyBirdForm()
