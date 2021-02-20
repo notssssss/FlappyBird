@@ -19,6 +19,9 @@ namespace FlappyBirdProject
 
 		private Image frame1, frame2, frame3;
 
+		private string path_die_sound = @"C:\Users\Soumya\Desktop\Repositories\FlappyBird\SoundEffects\hit1.wav";
+		private string path_jump_sound = @"C:\Users\Soumya\Desktop\Repositories\FlappyBird\SoundEffects\wing1.wav";
+
 		private bool dead = false;
 		public FlappyBirdForm()
 		{
@@ -33,7 +36,7 @@ namespace FlappyBirdProject
 		private void Jump()
 		{
 			milliseconds = 0;
-			SoundPlayer player = new SoundPlayer(@"C:\Users\Soumya\Desktop\Repositories\FlappyBird\SoundEffects\wing.wav");
+			SoundPlayer player = new SoundPlayer(path_jump_sound);
 			player.Play();
 			GravityTimer.Stop();
 			JumpTimer.Start();
@@ -51,6 +54,9 @@ namespace FlappyBirdProject
 
 				if (Y_bottom_bird >= Y_top_ground && !dead)
 				{
+					SoundPlayer player = new SoundPlayer(path_die_sound);
+					player.Play();
+
 					GravityTimer.Stop();
 					MessageBox.Show("Dead bird. :-(");
 					dead = true;
