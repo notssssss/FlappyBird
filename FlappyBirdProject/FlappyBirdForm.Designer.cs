@@ -37,9 +37,13 @@ namespace FlappyBirdProject
 			this.JumpAnimationWaitTimer = new System.Windows.Forms.Timer(this.components);
 			this.Sounds = new AxWMPLib.AxWindowsMediaPlayer();
 			this.Ground = new System.Windows.Forms.PictureBox();
+			this.BottomPipe = new System.Windows.Forms.PictureBox();
+			this.TopPipe = new System.Windows.Forms.PictureBox();
 			((System.ComponentModel.ISupportInitialize)(this.FlappyBirdSprite)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.Sounds)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.Ground)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.BottomPipe)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.TopPipe)).BeginInit();
 			this.SuspendLayout();
 			// 
 			// FlappyBirdSprite
@@ -86,19 +90,43 @@ namespace FlappyBirdProject
 			this.Ground.InitialImage = ((System.Drawing.Image)(resources.GetObject("Ground.InitialImage")));
 			this.Ground.Location = new System.Drawing.Point(-8, 403);
 			this.Ground.Name = "Ground";
-			this.Ground.Size = new System.Drawing.Size(287, 152);
+			this.Ground.Size = new System.Drawing.Size(336, 152);
 			this.Ground.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
 			this.Ground.TabIndex = 2;
 			this.Ground.TabStop = false;
+			// 
+			// BottomPipe
+			// 
+			this.BottomPipe.BackColor = System.Drawing.Color.Transparent;
+			this.BottomPipe.Image = ((System.Drawing.Image)(resources.GetObject("BottomPipe.Image")));
+			this.BottomPipe.Location = new System.Drawing.Point(222, 290);
+			this.BottomPipe.Name = "BottomPipe";
+			this.BottomPipe.Size = new System.Drawing.Size(52, 241);
+			this.BottomPipe.TabIndex = 3;
+			this.BottomPipe.TabStop = false;
+			this.BottomPipe.Visible = false;
+			// 
+			// TopPipe
+			// 
+			this.TopPipe.BackColor = System.Drawing.Color.Transparent;
+			this.TopPipe.Image = ((System.Drawing.Image)(resources.GetObject("TopPipe.Image")));
+			this.TopPipe.Location = new System.Drawing.Point(221, -111);
+			this.TopPipe.Name = "TopPipe";
+			this.TopPipe.Size = new System.Drawing.Size(53, 267);
+			this.TopPipe.TabIndex = 4;
+			this.TopPipe.TabStop = false;
+			this.TopPipe.Visible = false;
 			// 
 			// FlappyBirdForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
-			this.ClientSize = new System.Drawing.Size(271, 470);
+			this.ClientSize = new System.Drawing.Size(314, 470);
 			this.Controls.Add(this.FlappyBirdSprite);
 			this.Controls.Add(this.Ground);
+			this.Controls.Add(this.TopPipe);
+			this.Controls.Add(this.BottomPipe);
 			this.Controls.Add(this.Sounds);
 			this.Name = "FlappyBirdForm";
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -107,6 +135,8 @@ namespace FlappyBirdProject
 			((System.ComponentModel.ISupportInitialize)(this.FlappyBirdSprite)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.Sounds)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.Ground)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.BottomPipe)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.TopPipe)).EndInit();
 			this.ResumeLayout(false);
 
 		}
@@ -119,6 +149,8 @@ namespace FlappyBirdProject
 		private System.Windows.Forms.Timer JumpAnimationWaitTimer;
 		private AxWMPLib.AxWindowsMediaPlayer Sounds;
 		private System.Windows.Forms.PictureBox Ground;
+		private System.Windows.Forms.PictureBox BottomPipe;
+		private System.Windows.Forms.PictureBox TopPipe;
 	}
 }
 
