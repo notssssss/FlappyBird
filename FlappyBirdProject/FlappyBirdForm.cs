@@ -16,6 +16,7 @@ namespace FlappyBirdProject
 		private int gravity = 3;
 		private int jumpspeed = -6;
 		private int milliseconds = 0;
+		private int pipespeed = -2;
 
 		private Image frame1, frame2, frame3;
 
@@ -23,6 +24,9 @@ namespace FlappyBirdProject
 		private string path_jump_sound = @"C:\Users\Soumya\Desktop\Repositories\FlappyBird\SoundEffects\wing.wav";
 
 		private bool dead = false;
+
+		private PictureBox pipeTop;
+		private PictureBox pipeBot;
 		public FlappyBirdForm()
 		{
 			InitializeComponent();
@@ -31,6 +35,8 @@ namespace FlappyBirdProject
 			frame3 = Image.FromFile(@"C:\Users\Soumya\Desktop\Repositories\FlappyBird\Sprites\FB_2.png");
 			GravityTimer.Start();
 			JumpTimer.Start();
+
+			SpawnPipes();
 		}
 
 		private void Jump()
@@ -89,6 +95,30 @@ namespace FlappyBirdProject
 				JumpAnimationWaitTimer.Start();
 				FlappyBirdSprite.Image = frame2;
 			}
+		}
+
+		private void PipeTimer_Tick(object sender, EventArgs e)
+		{
+			Point p = pipeBot.Location;
+			p.X += pipespeed;
+			pipeBot.Location = p;
+
+			p = pipeTop.Location;
+			p.X += pipespeed;
+			pipeTop.Location = p;
+		}
+
+		private void SpawnPipes()
+		{
+			pipeTop = TopPipe;
+			pipeTop.Visible = true;
+			pipeBot = BottomPipe;
+			pipeBot.Visible = true;
+
+			this.Controls.Add(pipeTop);
+			this.Controls.Add(pipeBot);
+
+			PipeTimer.Start();
 		}
 
 		private void JumpAnimationWaitTimer_Tick(object sender, EventArgs e)
