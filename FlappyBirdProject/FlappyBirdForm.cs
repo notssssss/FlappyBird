@@ -65,6 +65,16 @@ namespace FlappyBirdProject
 			GravityTimer.Stop();
 			JumpTimer.Start();
 		}
+
+		private void GameOver()
+		{
+			SoundPlayer player = new SoundPlayer(path_die_sound);
+			player.Play();
+
+			GravityTimer.Stop();
+			dead = true;
+			gravity = 0;
+		}
 		private void GravityTimer_Tick(object sender, EventArgs e)
 		{
 			if (!dead)
@@ -76,16 +86,8 @@ namespace FlappyBirdProject
 				Point p1 = Ground.Location;
 				float Y_top_ground = p1.Y;
 
-				if (Y_bottom_bird >= Y_top_ground && !dead)
-				{
-					SoundPlayer player = new SoundPlayer(path_die_sound);
-					player.Play();
-
-					GravityTimer.Stop();
-					MessageBox.Show("Dead bird. :-(");
-					dead = true;
-					gravity = 0;
-				}
+				if (Y_bottom_bird >= Y_top_ground && !dead) GameOver();
+				else if (CheckBirdCollisionWithPipes() && !dead) GameOver();
 				else
 				{
 					// fall down
@@ -98,6 +100,7 @@ namespace FlappyBirdProject
 
 		private void JumpTimer_Tick(object sender, EventArgs e)
 		{
+			if (CheckBirdCollisionWithPipes() && !dead) GameOver();
 			if (milliseconds == 50) FlappyBirdSprite.Image = frame1;
 
 			if (milliseconds < 100)
@@ -128,8 +131,35 @@ namespace FlappyBirdProject
 			PipeTimer.RunWorkerAsync();
 		}
 
+		private bool CheckBirdCollisionWithPipes()
+		{
+			// We need the bottom Y Axis of the pipeTop
+			// And the top Y Axis of the pipeBot
+
+			Point p1 = pipeTop.Location;
+			float Y1 = p1.Y + pipeTop.Size.Height;
+			float X1_L = p1.X;
+			float X1_R = p1.X + pipeTop.Size.Width;
+
+			Point p2 = pipeBot.Location;
+			float Y2 = p2.Y;
+
+			// Calculating the top Y axis and the bot Y axis of the bird
+			Point P = FlappyBirdSprite.Location;
+			float Y_T = P.Y;
+			float Y_B = P.Y + FlappyBirdSprite.Size.Height;
+			float X_L = P.X;
+			float X_R = P.X + FlappyBirdSprite.Size.Width;
+
+			if ((X_R < X1_L && X_R < X1_R) || (X1_R < X_L && X1_L < X_L)) return false;
+			else if ((Y1 < Y_T) && (Y_B < Y2)) return false;
+			return true;
+		}
+
 		private void JumpAnimationWaitTimer_Tick(object sender, EventArgs e)
 		{
+			if (CheckBirdCollisionWithPipes() && !dead) GameOver();
+
 			if (milliseconds < 130)
 			{
 				milliseconds += JumpAnimationWaitTimer.Interval;
