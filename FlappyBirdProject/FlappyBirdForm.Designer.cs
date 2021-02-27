@@ -39,7 +39,6 @@ namespace FlappyBirdProject
 			this.Ground = new System.Windows.Forms.PictureBox();
 			this.BottomPipe = new System.Windows.Forms.PictureBox();
 			this.TopPipe = new System.Windows.Forms.PictureBox();
-			this.PipeTimer = new System.Windows.Forms.Timer(this.components);
 			((System.ComponentModel.ISupportInitialize)(this.FlappyBirdSprite)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.Sounds)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.Ground)).BeginInit();
@@ -118,11 +117,6 @@ namespace FlappyBirdProject
 			this.TopPipe.TabStop = false;
 			this.TopPipe.Visible = false;
 			// 
-			// PipeTimer
-			// 
-			this.PipeTimer.Interval = 10;
-			this.PipeTimer.Tick += new System.EventHandler(this.PipeTimer_Tick);
-			// 
 			// FlappyBirdForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -157,7 +151,6 @@ namespace FlappyBirdProject
 		private System.Windows.Forms.PictureBox Ground;
 		private System.Windows.Forms.PictureBox BottomPipe;
 		private System.Windows.Forms.PictureBox TopPipe;
-		private System.Windows.Forms.Timer PipeTimer;
 	}
 }
 

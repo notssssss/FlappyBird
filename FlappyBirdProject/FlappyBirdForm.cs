@@ -16,7 +16,7 @@ namespace FlappyBirdProject
 		private int gravity = 3;
 		private int jumpspeed = -6;
 		private int milliseconds = 0;
-		private int pipespeed = -2;
+		private int pipespeed = -14;
 
 		private Image frame1, frame2, frame3;
 
@@ -27,6 +27,8 @@ namespace FlappyBirdProject
 
 		private PictureBox pipeTop;
 		private PictureBox pipeBot;
+
+		private BackgroundWorker PipeTimer = new BackgroundWorker();
 		public FlappyBirdForm()
 		{
 			InitializeComponent();
@@ -36,9 +38,25 @@ namespace FlappyBirdProject
 			GravityTimer.Start();
 			JumpTimer.Start();
 
+			PipeTimer.DoWork += new DoWorkEventHandler(PipeTimer_Work);
+
 			SpawnPipes();
 		}
 
+		private void PipeTimer_Work(object sender, DoWorkEventArgs e)
+		{
+			while (true)
+			{
+				Point p = pipeBot.Location;
+				p.X += pipespeed;
+				pipeBot.Location = p;
+
+				p = pipeTop.Location;
+				p.X += pipespeed;
+				pipeTop.Location = p;
+				System.Threading.Thread.Sleep(100); // Wait five minutes
+			}
+		}
 		private void Jump()
 		{
 			milliseconds = 0;
@@ -97,17 +115,6 @@ namespace FlappyBirdProject
 			}
 		}
 
-		private void PipeTimer_Tick(object sender, EventArgs e)
-		{
-			Point p = pipeBot.Location;
-			p.X += pipespeed;
-			pipeBot.Location = p;
-
-			p = pipeTop.Location;
-			p.X += pipespeed;
-			pipeTop.Location = p;
-		}
-
 		private void SpawnPipes()
 		{
 			pipeTop = TopPipe;
@@ -118,7 +125,7 @@ namespace FlappyBirdProject
 			this.Controls.Add(pipeTop);
 			this.Controls.Add(pipeBot);
 
-			PipeTimer.Start();
+			PipeTimer.RunWorkerAsync();
 		}
 
 		private void JumpAnimationWaitTimer_Tick(object sender, EventArgs e)
