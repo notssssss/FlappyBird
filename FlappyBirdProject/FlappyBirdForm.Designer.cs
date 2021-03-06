@@ -102,7 +102,7 @@ namespace FlappyBirdProject
 			// 
 			this.BottomPipe.BackColor = System.Drawing.Color.Transparent;
 			this.BottomPipe.Image = ((System.Drawing.Image)(resources.GetObject("BottomPipe.Image")));
-			this.BottomPipe.Location = new System.Drawing.Point(222, 290);
+			this.BottomPipe.Location = new System.Drawing.Point(221, 290);
 			this.BottomPipe.Name = "BottomPipe";
 			this.BottomPipe.Size = new System.Drawing.Size(52, 241);
 			this.BottomPipe.TabIndex = 3;

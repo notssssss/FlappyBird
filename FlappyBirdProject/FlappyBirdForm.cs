@@ -12,174 +12,47 @@ using System.Media;
 namespace FlappyBirdProject
 {
 	public partial class FlappyBirdForm : Form
+
 	{
-		private int gravity = 3;
-		private int jumpspeed = -6;
-		private int milliseconds = 0;
-		private int pipespeed = -14;
+		private int gravity = 3; // how fast it falls
+		private int jumpSpeed = -4; // how high it jumps
+		private int miliseconds = 0; // to know when to stop the jump timer
 
-		private int score = 0;
+		private int pipeSpeed = -10;
 
-		private Image frame1, frame2, frame3;
+		private int Score = 0;
+
+		private Image frame1;
+		private Image frame2;
+		private Image frame3;
+
+		private bool dead = false;
 
 		private string path_die_sound = @"C:\Users\Soumya\Desktop\Repositories\FlappyBird\SoundEffects\hit.wav";
 		private string path_jump_sound = @"C:\Users\Soumya\Desktop\Repositories\FlappyBird\SoundEffects\wing.wav";
 
-		private bool dead = false;
-		private bool GotCoin = false;
 
 		private PictureBox pipeTop;
 		private PictureBox coin;
 		private PictureBox pipeBot;
+		private bool gotCoin = false;
 
 		private BackgroundWorker PipeTimer = new BackgroundWorker();
+
+		private int X_pipes = 0;
+		private bool pipesBehind = false;
+
 		public FlappyBirdForm()
 		{
 			InitializeComponent();
+
 			frame1 = Image.FromFile(@"C:\Users\Soumya\Desktop\Repositories\FlappyBird\Sprites\FB_0.png");
 			frame2 = Image.FromFile(@"C:\Users\Soumya\Desktop\Repositories\FlappyBird\Sprites\FB_1.png");
 			frame3 = Image.FromFile(@"C:\Users\Soumya\Desktop\Repositories\FlappyBird\Sprites\FB_2.png");
 			GravityTimer.Start();
-			JumpTimer.Start();
 
 			PipeTimer.DoWork += new DoWorkEventHandler(PipeTimer_Work);
-
 			SpawnPipes();
-		}
-
-		private bool CheckBirdCollisionWithCoin()
-		{
-			Point birdloc = FlappyBirdSprite.Location;
-			Point coinloc = coin.Location;
-
-			float X_Right = birdloc.X + FlappyBirdSprite.Size.Width;
-			float X_Left = birdloc.X;
-			
-			float X_Right_Coin = coinloc.X + coin.Size.Width;
-			float X_Left_Coin = coinloc.X;
-
-			float Y_Top = birdloc.Y;
-			float Y_Bot = birdloc.Y + FlappyBirdSprite.Size.Height;
-			float Y_Bot_Coin = coinloc.Y + coin.Size.Width;
-			float Y_Top_Coin = coinloc.Y;
-
-			if ((X_Left_Coin <= X_Left  && X_Left <= X_Right_Coin )|| (X_Left_Coin <= X_Right && X_Right <= X_Right_Coin))
-			{
-				if ((Y_Top_Coin <= Y_Top && Y_Top <= Y_Bot_Coin) || (Y_Top_Coin <= Y_Bot && Y_Bot <= Y_Bot_Coin)) return true;
-			}
-
-			return false;
-		}
-		private void PipeTimer_Work(object sender, DoWorkEventArgs e)
-		{
-			while (true)
-			{
-				Point p = pipeBot.Location;
-				p.X += pipespeed;
-				pipeBot.Location = p;
-
-				p = pipeTop.Location;
-				p.X += pipespeed;
-				pipeTop.Location = p; 
-
-				p = coin.Location;
-				p.X += pipespeed;
-				coin.Location = p;
-
-				System.Threading.Thread.Sleep(100); // Wait five minutes
-
-			}
-		}
-		private void Jump()
-		{
-			milliseconds = 0;
-			SoundPlayer player = new SoundPlayer(path_jump_sound);
-			player.Play();
-			GravityTimer.Stop();
-			JumpTimer.Start();
-		}
-
-		private void GameOver()
-		{
-			SoundPlayer player = new SoundPlayer(path_die_sound);
-			player.Play();
-
-			GravityTimer.Stop();
-			dead = true;
-			gravity = 0;
-		}
-		private void GravityTimer_Tick(object sender, EventArgs e)
-		{
-			if (!dead)
-			{
-				Point p = FlappyBirdSprite.Location;
-
-				// checking if the bird hit the ground
-				float Y_bottom_bird = p.Y + FlappyBirdSprite.Size.Height;
-				Point p1 = Ground.Location;
-				float Y_top_ground = p1.Y;
-
-				if (Y_bottom_bird >= Y_top_ground && !dead) GameOver();
-				else if (CheckBirdCollisionWithPipes() && !dead) GameOver();
-				else
-				{
-					// fall down
-					p = FlappyBirdSprite.Location;
-					p.Y += gravity;
-					FlappyBirdSprite.Location = p;
-
-					if (CheckBirdCollisionWithCoin() && !GotCoin)
-					{
-						GotCoin = true;
-						this.Controls.Remove(coin);
-						score++;
-						Score_Label.Text = "Score: " + score.ToString();
-					}
-				}
-			}
-		}
-
-		private void JumpTimer_Tick(object sender, EventArgs e)
-		{
-			if (CheckBirdCollisionWithPipes() && !dead) GameOver();
-			if (CheckBirdCollisionWithCoin() && !GotCoin)
-			{
-				GotCoin = true;
-				this.Controls.Remove(coin);
-				score++;
-				Score_Label.Text = "Score: " + score.ToString();
-			}
-			if (milliseconds == 50) FlappyBirdSprite.Image = frame1;
-
-			if (milliseconds < 100)
-			{
-				milliseconds += JumpTimer.Interval;
-				Point p = FlappyBirdSprite.Location;
-				p.Y += jumpspeed;
-				FlappyBirdSprite.Location = p;
-			}
-			else
-			{
-				JumpTimer.Stop();
-				JumpAnimationWaitTimer.Start();
-				FlappyBirdSprite.Image = frame2;
-			}
-		}
-
-		private void SpawnPipes()
-		{
-			pipeTop = TopPipe;
-			pipeTop.Visible = true;
-			pipeBot = BottomPipe;
-			pipeBot.Visible = true;
-			coin = Coin;
-			coin.Visible = true;
-
-			this.Controls.Add(pipeTop);
-			this.Controls.Add(pipeBot);
-			this.Controls.Add(coin);
-
-			PipeTimer.RunWorkerAsync();
 		}
 
 		private bool CheckBirdCollisionWithPipes()
@@ -207,35 +80,211 @@ namespace FlappyBirdProject
 			return true;
 		}
 
-		private void JumpAnimationWaitTimer_Tick(object sender, EventArgs e)
+		private bool CheckBirdCollisionWithCoin()
 		{
-			if (CheckBirdCollisionWithPipes() && !dead) GameOver();
-			if (CheckBirdCollisionWithCoin() && !GotCoin)
-			{
-				GotCoin = true;
-				this.Controls.Remove(coin);
-				score++;
-				Score_Label.Text = "Score: " + score.ToString();
-			}
+			Point birdLocation = FlappyBirdSprite.Location;
+			Point coinLocation = coin.Location;
 
-			if (milliseconds < 130)
+			float X_Right = birdLocation.X + FlappyBirdSprite.Size.Width;
+			float X_Left = birdLocation.X;
+			float X_Right_Coin = coinLocation.X + coin.Size.Width;
+			float X_Left_Coin = coinLocation.X;
+
+			float Y_Top = birdLocation.Y;
+			float Y_Bot = birdLocation.Y + FlappyBirdSprite.Size.Height;
+			float Y_Bot_Coin = coinLocation.Y + coin.Size.Width;
+			float Y_Top_Coin = coinLocation.Y;
+
+			if ((X_Left_Coin <= X_Left && X_Left <= X_Right_Coin) || (X_Left_Coin <= X_Right && X_Right <= X_Right_Coin))
+				if ((Y_Top_Coin <= Y_Top && Y_Top <= Y_Bot_Coin) || (Y_Top_Coin <= Y_Bot && Y_Bot <= Y_Bot_Coin))
+					return true;
+			return false;
+		}
+
+		private void GameOver()
+		{
+			SoundPlayer player = new SoundPlayer(path_die_sound);
+			player.Play();
+
+			GravityTimer.Stop();
+			dead = true;
+			gravity = 0;
+		}
+
+		private void PipeTimer_Work(object sender, DoWorkEventArgs e)
+		{
+			while (!dead)
 			{
-				milliseconds += JumpAnimationWaitTimer.Interval;
-				FlappyBirdSprite.Image = frame3;
+				if (!pipesBehind)
+				{
+					/// move them..
+					Point p = pipeBot.Location;
+					p.X += pipeSpeed;
+					pipeBot.Location = p;
+
+					p = pipeTop.Location;
+					p.X += pipeSpeed;
+					pipeTop.Location = p;
+
+					p = coin.Location;
+					p.X += pipeSpeed;
+					coin.Location = p;
+
+					X_pipes = pipeTop.Location.X;
+					UpdatePipes();
+				}
+				else RespawnPipes();
+
+				System.Threading.Thread.Sleep(60);
 			}
-			else
-			{
-				JumpAnimationWaitTimer.Stop();
-				GravityTimer.Start();
-				FlappyBirdSprite.Image = frame3;
-			}
+		}
+
+		private void SpawnPipes()
+		{
+			pipeTop = TopPipe;
+			pipeTop.Visible = true;
+			pipeBot = BottomPipe;
+			pipeBot.Visible = true;
+			coin = Coin; // i am borrowing the properties of the coin picturebox
+			coin.Visible = true;
+
+			X_pipes = pipeTop.Location.X + pipeTop.Size.Width;
+
+			this.Controls.Add(pipeTop);
+			this.Controls.Add(coin);
+			this.Controls.Add(pipeBot);
+
+			PipeTimer.RunWorkerAsync();
+		}
+
+		private void FlappyBirdForm_KeyPressyy(object sender, KeyEventArgs e)
+		{
+			
 		}
 
 		private void FlappyBirdForm_KeyPress(object sender, KeyPressEventArgs e)
 		{
 			if (e.KeyChar == ' ' && !dead)
 			{
-				Jump();
+				SoundPlayer player = new SoundPlayer(path_jump_sound);
+				player.Play();
+
+				miliseconds = 0;
+				GravityTimer.Stop();
+				JumpTimer.Start();
+			}
+		}
+
+		private void UpdatePipes()
+		{
+			if (X_pipes <= -50)
+				pipesBehind = true;
+		}
+
+		private void RespawnPipes()
+		{
+			pipesBehind = false;
+
+			this.Controls.Remove(pipeTop);
+			this.Controls.Remove(pipeBot);
+
+			pipeTop.Location = new Point(300, -111);
+			pipeBot.Location = new Point(300, 290);
+			coin.Location = new Point(300, 207);
+
+			gotCoin = false;
+
+			this.Controls.Add(pipeTop);
+			this.Controls.Add(pipeBot);
+			this.Controls.Add(coin);
+		}
+
+		private void GravityTimer_Tick(object sender, EventArgs e)
+		{
+			if (!dead)
+			{
+				Point p = FlappyBirdSprite.Location;
+
+				// checking if the bird hit the ground
+				float Y_bottom_bird = p.Y + FlappyBirdSprite.Size.Height;
+				Point p1 = Ground.Location;
+				float Y_top_ground = p1.Y;
+
+
+
+				if (Y_bottom_bird >= Y_top_ground && !dead) GameOver();
+				else if (CheckBirdCollisionWithPipes() && !dead) GameOver();
+				else
+				{
+					// fall down
+					p = FlappyBirdSprite.Location;
+					p.Y += gravity;
+					FlappyBirdSprite.Location = p;
+
+					if (CheckBirdCollisionWithCoin() && !gotCoin)
+					{
+						gotCoin = true;
+						this.Controls.Remove(coin);
+						Score++;
+						Score_Label.Text = "Score: " + Score.ToString();
+						// I should also play a sound, but we will implement it later.
+					}
+				}
+			}
+		}
+
+		private void JumpTimer_Tick(object sender, EventArgs e)
+		{
+			if (CheckBirdCollisionWithPipes() && !dead) GameOver();
+
+			if (miliseconds == 50) FlappyBirdSprite.Image = frame1;
+
+			if (CheckBirdCollisionWithCoin() && !gotCoin)
+			{
+				gotCoin = true;
+				this.Controls.Remove(coin);
+				Score++;
+				Score_Label.Text = "Score: " + Score.ToString();
+				// I should also play a sound, but we will implement it later.
+			}
+
+			if (miliseconds < 100)
+			{
+				miliseconds += JumpTimer.Interval;
+				Point p = FlappyBirdSprite.Location;
+				p.Y += jumpSpeed;
+				FlappyBirdSprite.Location = p;
+			}
+			else
+			{
+				JumpTimer.Stop();
+				JumpAnimationWaitTimer.Start();
+				FlappyBirdSprite.Image = frame2;
+			}
+		}
+
+		private void JumpAnimationWaitTimer_Tick(object sender, EventArgs e)
+		{
+			if (CheckBirdCollisionWithPipes() && !dead) GameOver();
+
+			if (CheckBirdCollisionWithCoin() && !gotCoin)
+			{
+				gotCoin = true;
+				this.Controls.Remove(coin);
+				Score++;
+				Score_Label.Text = "Score: " + Score.ToString();
+				// I should also play a sound, but we will implement it later.
+			}
+
+			if (miliseconds < 140)
+			{
+				miliseconds += JumpAnimationWaitTimer.Interval;
+			}
+			else
+			{
+				JumpAnimationWaitTimer.Stop();
+				GravityTimer.Start();
+				FlappyBirdSprite.Image = frame3;
 			}
 		}
 	}
