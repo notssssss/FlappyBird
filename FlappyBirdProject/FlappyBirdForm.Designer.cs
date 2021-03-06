@@ -39,11 +39,13 @@ namespace FlappyBirdProject
 			this.Ground = new System.Windows.Forms.PictureBox();
 			this.BottomPipe = new System.Windows.Forms.PictureBox();
 			this.TopPipe = new System.Windows.Forms.PictureBox();
+			this.Coin = new System.Windows.Forms.PictureBox();
 			((System.ComponentModel.ISupportInitialize)(this.FlappyBirdSprite)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.Sounds)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.Ground)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.BottomPipe)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.TopPipe)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.Coin)).BeginInit();
 			this.SuspendLayout();
 			// 
 			// FlappyBirdSprite
@@ -117,12 +119,23 @@ namespace FlappyBirdProject
 			this.TopPipe.TabStop = false;
 			this.TopPipe.Visible = false;
 			// 
+			// Coin
+			// 
+			this.Coin.Image = ((System.Drawing.Image)(resources.GetObject("Coin.Image")));
+			this.Coin.Location = new System.Drawing.Point(210, 195);
+			this.Coin.Name = "Coin";
+			this.Coin.Size = new System.Drawing.Size(64, 64);
+			this.Coin.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+			this.Coin.TabIndex = 5;
+			this.Coin.TabStop = false;
+			// 
 			// FlappyBirdForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
 			this.ClientSize = new System.Drawing.Size(314, 470);
+			this.Controls.Add(this.Coin);
 			this.Controls.Add(this.FlappyBirdSprite);
 			this.Controls.Add(this.Ground);
 			this.Controls.Add(this.TopPipe);
@@ -137,7 +150,9 @@ namespace FlappyBirdProject
 			((System.ComponentModel.ISupportInitialize)(this.Ground)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.BottomPipe)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.TopPipe)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.Coin)).EndInit();
 			this.ResumeLayout(false);
+			this.PerformLayout();
 
 		}
 
@@ -151,6 +166,7 @@ namespace FlappyBirdProject
 		private System.Windows.Forms.PictureBox Ground;
 		private System.Windows.Forms.PictureBox BottomPipe;
 		private System.Windows.Forms.PictureBox TopPipe;
+		private System.Windows.Forms.PictureBox Coin;
 	}
 }
 
