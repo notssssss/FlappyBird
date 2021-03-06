@@ -122,10 +122,10 @@ namespace FlappyBirdProject
 			// Coin
 			// 
 			this.Coin.Image = ((System.Drawing.Image)(resources.GetObject("Coin.Image")));
-			this.Coin.Location = new System.Drawing.Point(210, 195);
+			this.Coin.Location = new System.Drawing.Point(221, 207);
 			this.Coin.Name = "Coin";
-			this.Coin.Size = new System.Drawing.Size(64, 64);
-			this.Coin.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+			this.Coin.Size = new System.Drawing.Size(53, 42);
+			this.Coin.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
 			this.Coin.TabIndex = 5;
 			this.Coin.TabStop = false;
 			// 
@@ -152,7 +152,6 @@ namespace FlappyBirdProject
 			((System.ComponentModel.ISupportInitialize)(this.TopPipe)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.Coin)).EndInit();
 			this.ResumeLayout(false);
-			this.PerformLayout();
 
 		}
 

@@ -26,6 +26,7 @@ namespace FlappyBirdProject
 		private bool dead = false;
 
 		private PictureBox pipeTop;
+		private PictureBox coin;
 		private PictureBox pipeBot;
 
 		private BackgroundWorker PipeTimer = new BackgroundWorker();
@@ -54,7 +55,13 @@ namespace FlappyBirdProject
 				p = pipeTop.Location;
 				p.X += pipespeed;
 				pipeTop.Location = p;
+
+				p = coin.Location;
+				p.X += pipespeed;
+				coin.Location = p;
+
 				System.Threading.Thread.Sleep(100); // Wait five minutes
+
 			}
 		}
 		private void Jump()
@@ -124,9 +131,12 @@ namespace FlappyBirdProject
 			pipeTop.Visible = true;
 			pipeBot = BottomPipe;
 			pipeBot.Visible = true;
+			coin = Coin;
+			coin.Visible = true;
 
 			this.Controls.Add(pipeTop);
 			this.Controls.Add(pipeBot);
+			this.Controls.Add(coin);
 
 			PipeTimer.RunWorkerAsync();
 		}
