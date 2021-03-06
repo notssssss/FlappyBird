@@ -22,6 +22,8 @@ namespace FlappyBirdProject
 
 		private int Score = 0;
 
+		private int deltaHeight = 0;
+
 		private Image frame1;
 		private Image frame2;
 		private Image frame3;
@@ -157,11 +159,6 @@ namespace FlappyBirdProject
 			PipeTimer.RunWorkerAsync();
 		}
 
-		private void FlappyBirdForm_KeyPressyy(object sender, KeyEventArgs e)
-		{
-			
-		}
-
 		private void FlappyBirdForm_KeyPress(object sender, KeyPressEventArgs e)
 		{
 			if (e.KeyChar == ' ' && !dead)
@@ -188,9 +185,12 @@ namespace FlappyBirdProject
 			this.Controls.Remove(pipeTop);
 			this.Controls.Remove(pipeBot);
 
-			pipeTop.Location = new Point(300, -111);
-			pipeBot.Location = new Point(300, 290);
-			coin.Location = new Point(300, 207);
+			Random r = new Random();
+			deltaHeight = r.Next(-100, 100);
+
+			pipeTop.Location = new Point(300, -111 + deltaHeight);
+			pipeBot.Location = new Point(300, 290 + deltaHeight);
+			coin.Location = new Point(300, 207 + deltaHeight);
 
 			gotCoin = false;
 
