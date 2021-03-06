@@ -40,6 +40,7 @@ namespace FlappyBirdProject
 			this.BottomPipe = new System.Windows.Forms.PictureBox();
 			this.TopPipe = new System.Windows.Forms.PictureBox();
 			this.Coin = new System.Windows.Forms.PictureBox();
+			this.Score_Label = new System.Windows.Forms.Label();
 			((System.ComponentModel.ISupportInitialize)(this.FlappyBirdSprite)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.Sounds)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.Ground)).BeginInit();
@@ -129,12 +130,25 @@ namespace FlappyBirdProject
 			this.Coin.TabIndex = 5;
 			this.Coin.TabStop = false;
 			// 
+			// Score_Label
+			// 
+			this.Score_Label.AutoSize = true;
+			this.Score_Label.BackColor = System.Drawing.Color.Transparent;
+			this.Score_Label.Font = new System.Drawing.Font("Lucida Console", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.Score_Label.ForeColor = System.Drawing.Color.Black;
+			this.Score_Label.Location = new System.Drawing.Point(92, 434);
+			this.Score_Label.Name = "Score_Label";
+			this.Score_Label.Size = new System.Drawing.Size(124, 27);
+			this.Score_Label.TabIndex = 6;
+			this.Score_Label.Text = "Score: ";
+			// 
 			// FlappyBirdForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
 			this.ClientSize = new System.Drawing.Size(314, 470);
+			this.Controls.Add(this.Score_Label);
 			this.Controls.Add(this.Coin);
 			this.Controls.Add(this.FlappyBirdSprite);
 			this.Controls.Add(this.Ground);
@@ -152,6 +166,7 @@ namespace FlappyBirdProject
 			((System.ComponentModel.ISupportInitialize)(this.TopPipe)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.Coin)).EndInit();
 			this.ResumeLayout(false);
+			this.PerformLayout();
 
 		}
 
@@ -166,6 +181,7 @@ namespace FlappyBirdProject
 		private System.Windows.Forms.PictureBox BottomPipe;
 		private System.Windows.Forms.PictureBox TopPipe;
 		private System.Windows.Forms.PictureBox Coin;
+		private System.Windows.Forms.Label Score_Label;
 	}
 }
 
