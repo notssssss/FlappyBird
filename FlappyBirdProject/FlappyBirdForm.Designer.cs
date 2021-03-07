@@ -154,6 +154,7 @@ namespace FlappyBirdProject
 			this.Controls.Add(this.TopPipe);
 			this.Controls.Add(this.BottomPipe);
 			this.Controls.Add(this.Sounds);
+			this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
 			this.Name = "FlappyBirdForm";
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
 			this.Text = "Flappy Bird";

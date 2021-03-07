@@ -30,6 +30,7 @@ namespace FlappyBirdProject
 
 		private bool dead = false;
 
+		private string path_coin_sound = @"C:\Users\Soumya\Desktop\Repositories\FlappyBird\SoundEffects\coin.wav";
 		private string path_die_sound = @"C:\Users\Soumya\Desktop\Repositories\FlappyBird\SoundEffects\hit.wav";
 		private string path_jump_sound = @"C:\Users\Soumya\Desktop\Repositories\FlappyBird\SoundEffects\wing.wav";
 
@@ -99,7 +100,10 @@ namespace FlappyBirdProject
 
 			if ((X_Left_Coin <= X_Left && X_Left <= X_Right_Coin) || (X_Left_Coin <= X_Right && X_Right <= X_Right_Coin))
 				if ((Y_Top_Coin <= Y_Top && Y_Top <= Y_Bot_Coin) || (Y_Top_Coin <= Y_Bot && Y_Bot <= Y_Bot_Coin))
+				{
 					return true;
+				}
+
 			return false;
 		}
 
