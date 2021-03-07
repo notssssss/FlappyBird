@@ -91,9 +91,9 @@ namespace FlappyBirdProject
 			this.Ground.BackColor = System.Drawing.Color.Transparent;
 			this.Ground.Image = ((System.Drawing.Image)(resources.GetObject("Ground.Image")));
 			this.Ground.InitialImage = ((System.Drawing.Image)(resources.GetObject("Ground.InitialImage")));
-			this.Ground.Location = new System.Drawing.Point(-8, 403);
+			this.Ground.Location = new System.Drawing.Point(-13, 395);
 			this.Ground.Name = "Ground";
-			this.Ground.Size = new System.Drawing.Size(336, 152);
+			this.Ground.Size = new System.Drawing.Size(338, 170);
 			this.Ground.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
 			this.Ground.TabIndex = 2;
 			this.Ground.TabStop = false;
@@ -135,11 +135,12 @@ namespace FlappyBirdProject
 			this.Score_Label.AutoSize = true;
 			this.Score_Label.BackColor = System.Drawing.Color.Transparent;
 			this.Score_Label.Font = new System.Drawing.Font("Lucida Console", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.Score_Label.Location = new System.Drawing.Point(86, 434);
+			this.Score_Label.Location = new System.Drawing.Point(85, 434);
 			this.Score_Label.Name = "Score_Label";
 			this.Score_Label.Size = new System.Drawing.Size(140, 27);
 			this.Score_Label.TabIndex = 6;
 			this.Score_Label.Text = "Score: 0";
+			this.Score_Label.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
 			// 
 			// FlappyBirdForm
 			// 
