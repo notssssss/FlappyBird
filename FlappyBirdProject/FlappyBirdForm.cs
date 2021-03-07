@@ -190,7 +190,7 @@ namespace FlappyBirdProject
 			this.Controls.Remove(pipeBot);
 
 			Random r = new Random();
-			deltaHeight = r.Next(-100, 100);
+			deltaHeight = r.Next(-120, 70);
 
 			pipeTop.Location = new Point(300, -111 + deltaHeight);
 			pipeBot.Location = new Point(300, 290 + deltaHeight);
