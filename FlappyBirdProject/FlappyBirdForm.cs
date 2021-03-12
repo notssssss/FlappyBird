@@ -108,15 +108,8 @@ namespace FlappyBirdProject
 			return false;
 		}
 
-		private void GameOver()
+		private void HighScores()
 		{
-			SoundPlayer player = new SoundPlayer(path_die_sound);
-			player.Play();
-
-			GravityTimer.Stop();
-			dead = true;
-			gravity = 0;
-
 			List<int> highscore = new List<int>();
 			string path = @"C:\Users\Soumya\Desktop\Repositories\FlappyBird\FlappyBirdProject\HighScores.txt";
 
@@ -134,27 +127,43 @@ namespace FlappyBirdProject
 			highscore.Sort();
 			highscore.Reverse();
 
-			string r = "";
+			/*string r = "";
 
 			foreach (int s in highscore)
 			{
 				r = r.Insert(r.Length, s.ToString() + " ");
 			}
 
-			MessageBox.Show(r);
+			MessageBox.Show(r);*/
+
+			File.WriteAllText(path, string.Empty);
 
 			using (StreamWriter sw = File.AppendText(path))
 			{
-				
+
 				foreach (int s in highscore)
 				{
 					sw.WriteLine(s.ToString());
 				}
 			}
 
+		}
 
-			ScoreWindow window = new ScoreWindow();
+		private void GameOver()
+		{
+			SoundPlayer player = new SoundPlayer(path_die_sound);
+			player.Play();
+
+			GravityTimer.Stop();
+			dead = true;
+			gravity = 0;
+
+			HighScores();
+
+			ScoreWindow window = new ScoreWindow(Score);
 			window.Show();
+
+			this.Close();
 		}
 
 		private void PipeTimer_Work(object sender, DoWorkEventArgs e)
