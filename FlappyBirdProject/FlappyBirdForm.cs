@@ -102,6 +102,8 @@ namespace FlappyBirdProject
 			if ((X_Left_Coin <= X_Left && X_Left <= X_Right_Coin) || (X_Left_Coin <= X_Right && X_Right <= X_Right_Coin))
 				if ((Y_Top_Coin <= Y_Top && Y_Top <= Y_Bot_Coin) || (Y_Top_Coin <= Y_Bot && Y_Bot <= Y_Bot_Coin))
 				{
+					/*SoundPlayer player = new SoundPlayer(path_coin_sound);
+					player.Play();*/
 					return true;
 				}
 

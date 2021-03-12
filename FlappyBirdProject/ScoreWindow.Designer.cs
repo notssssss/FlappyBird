@@ -56,7 +56,7 @@ namespace FlappyBirdProject
 			this.TextBoxNumbers.Cursor = System.Windows.Forms.Cursors.Arrow;
 			this.TextBoxNumbers.Font = new System.Drawing.Font("Lucida Console", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.TextBoxNumbers.Location = new System.Drawing.Point(47, 45);
-			this.TextBoxNumbers.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+			this.TextBoxNumbers.Margin = new System.Windows.Forms.Padding(2);
 			this.TextBoxNumbers.Multiline = true;
 			this.TextBoxNumbers.Name = "TextBoxNumbers";
 			this.TextBoxNumbers.ReadOnly = true;
@@ -72,6 +72,7 @@ namespace FlappyBirdProject
 			this.Rankings.Location = new System.Drawing.Point(11, 45);
 			this.Rankings.Multiline = true;
 			this.Rankings.Name = "Rankings";
+			this.Rankings.ReadOnly = true;
 			this.Rankings.Size = new System.Drawing.Size(31, 259);
 			this.Rankings.TabIndex = 2;
 			this.Rankings.Text = "1\r\n2\r\n3\r\n4\r\n5\r\n6\r\n7\r\n8";
@@ -85,6 +86,7 @@ namespace FlappyBirdProject
 			this.YourScore.Location = new System.Drawing.Point(12, 310);
 			this.YourScore.Multiline = true;
 			this.YourScore.Name = "YourScore";
+			this.YourScore.ReadOnly = true;
 			this.YourScore.Size = new System.Drawing.Size(232, 29);
 			this.YourScore.TabIndex = 3;
 			this.YourScore.Text = "Your Score:";
