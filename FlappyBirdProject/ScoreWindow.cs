@@ -7,25 +7,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO;
 
 namespace FlappyBirdProject
 {
-	public partial class MainMenu : Form
+	public partial class ScoreWindow : Form
 	{
-		public MainMenu()
+		public ScoreWindow()
 		{
 			InitializeComponent();
-		}
-
-		private void PlayButton_Click(object sender, EventArgs e)
-		{
-			FlappyBirdForm form = new FlappyBirdForm();
-			form.Show();
-		}
-
-		private void InstructionsButton_Click(object sender, EventArgs e)
-		{
-
 		}
 	}
 }

@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Media;
+using System.IO;
 
 namespace FlappyBirdProject
 {
@@ -115,6 +116,37 @@ namespace FlappyBirdProject
 			GravityTimer.Stop();
 			dead = true;
 			gravity = 0;
+
+			List<int> highscore = new List<int>();
+			string path = @"C:\Users\Soumya\Desktop\Repositories\FlappyBird\FlappyBirdProject\HighScores.txt";
+
+			using (StreamReader sr = File.OpenText(path))
+			{
+				string s = "";
+				while ((s = sr.ReadLine()) != null)
+				{
+					int sInt = int.Parse(s);
+					highscore.Add(sInt);
+				}
+			}
+
+			highscore.Add(Score);
+			highscore.Sort();
+			highscore.Reverse();
+
+
+			using (StreamWriter sw = File.AppendText(path))
+			{
+				
+				foreach (int s in highscore)
+				{
+					sw.WriteLine(s.ToString());
+				}
+			}
+
+
+			ScoreWindow window = new ScoreWindow();
+			window.Show();
 		}
 
 		private void PipeTimer_Work(object sender, DoWorkEventArgs e)
