@@ -134,6 +134,14 @@ namespace FlappyBirdProject
 			highscore.Sort();
 			highscore.Reverse();
 
+			string r = "";
+
+			foreach (int s in highscore)
+			{
+				r = r.Insert(r.Length, s.ToString() + " ");
+			}
+
+			MessageBox.Show(r);
 
 			using (StreamWriter sw = File.AppendText(path))
 			{
