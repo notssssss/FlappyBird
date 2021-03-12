@@ -131,6 +131,8 @@ namespace FlappyBirdProject
 			highscore.Sort();
 			highscore.Reverse();
 
+			highscore = highscore.GetRange(0, 8);
+
 			/*string r = "";
 
 			foreach (int s in highscore)

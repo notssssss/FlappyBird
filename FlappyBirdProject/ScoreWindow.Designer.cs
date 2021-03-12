@@ -120,7 +120,7 @@ namespace FlappyBirdProject
 			this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
 			this.Name = "ScoreWindow";
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-			this.Text = "High Scores";
+			this.Text = "Flappy Bird";
 			this.Load += new System.EventHandler(this.ScoreWindow_Load);
 			this.ResumeLayout(false);
 			this.PerformLayout();
