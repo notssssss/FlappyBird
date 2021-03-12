@@ -50,6 +50,8 @@ namespace FlappyBirdProject
 		{
 			InitializeComponent();
 
+			this.Select();
+
 			frame1 = Image.FromFile(@"C:\Users\Soumya\Desktop\Repositories\FlappyBird\Sprites\FB_0.png");
 			frame2 = Image.FromFile(@"C:\Users\Soumya\Desktop\Repositories\FlappyBird\Sprites\FB_1.png");
 			frame3 = Image.FromFile(@"C:\Users\Soumya\Desktop\Repositories\FlappyBird\Sprites\FB_2.png");

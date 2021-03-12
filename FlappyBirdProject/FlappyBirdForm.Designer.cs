@@ -135,10 +135,10 @@ namespace FlappyBirdProject
 			this.Score_Label.AutoSize = true;
 			this.Score_Label.BackColor = System.Drawing.Color.Transparent;
 			this.Score_Label.Font = new System.Drawing.Font("Lucida Console", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.Score_Label.Location = new System.Drawing.Point(85, 434);
+			this.Score_Label.Location = new System.Drawing.Point(87, 434);
 			this.Score_Label.Name = "Score_Label";
 			this.Score_Label.Size = new System.Drawing.Size(140, 27);
-			this.Score_Label.TabIndex = 6;
+			this.Score_Label.TabIndex = 8;
 			this.Score_Label.Text = "Score: 0";
 			this.Score_Label.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
 			// 
