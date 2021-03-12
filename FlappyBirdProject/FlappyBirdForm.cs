@@ -15,7 +15,7 @@ namespace FlappyBirdProject
 
 	{
 		private int gravity = 3; // how fast it falls
-		private int jumpSpeed = -5; // how high it jumps
+		private int jumpSpeed = -4; // how high it jumps
 		private int miliseconds = 0; // to know when to stop the jump timer
 
 		private int pipeSpeed = -12;
